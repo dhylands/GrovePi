@@ -44,6 +44,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 '''
+from __future__ import print_function
 
 import smbus
 import time
@@ -169,7 +170,7 @@ def sendCommand(byte):
         block.append(byte)
         return bus.write_i2c_block_data(address,Command_Mode,block)
     except IOError:
-        print "IOError"
+        print("IOError")
         return -1
 
 def sendData(byte):
@@ -178,7 +179,7 @@ def sendData(byte):
         block.append(byte)
         return bus.write_i2c_block_data(address,Data_mode,block)
     except IOError:
-        print "IOError"
+        print("IOError")
         return -1
 
 def multi_comm(commands):

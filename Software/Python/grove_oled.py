@@ -38,6 +38,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 '''
+from __future__ import print_function
 
 import smbus
 import time
@@ -185,7 +186,7 @@ def oled_init():
     blk.append(0x12)
     blk.append(0xAE) # Set display off
     blk.append(0xA8) # set multiplex ratio
-    blk.append(0x5F) # 96
+    blk.append(0x7F) # 128
     blk.append(0xA1) # set display start line
     blk.append(0x00)
     blk.append(0xA2) # set display offset
@@ -218,7 +219,7 @@ def oled_init():
     # Row Address
     blk=[0x75]       # Set Row Address
     blk.append(0x00) # Start 0
-    blk.append(0x5f) # End 95
+    blk.append(0x3f) # End 63
     # Column Address
     blk.append(0x15) # Set Column Address
     blk.append(0x08) # Start from 8th Column of driver IC. This is 0th Column for OLED

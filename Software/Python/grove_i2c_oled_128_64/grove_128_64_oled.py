@@ -44,6 +44,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 '''
+from __future__ import print_function
 
 import smbus
 import time
@@ -62,8 +63,8 @@ addressingMode= None
 SeeedOLED_Max_X                 =127 #128 Pixels
 SeeedOLED_Max_Y                 =63  #64  Pixels
                                 
-PAGE_MODE                       =01
-HORIZONTAL_MODE                 =02
+PAGE_MODE                       =1
+HORIZONTAL_MODE                 =2
                                                             
 SeeedOLED_Address               =0x3c
 SeeedOLED_Command_Mode          =0x80
@@ -88,7 +89,7 @@ Scroll_64Frames         =0x1
 Scroll_128Frames        =0x2
 Scroll_256Frames        =0x3
 
-BasicFont = [[0 for x in xrange(8)] for x in xrange(10)]
+BasicFont = [[0 for x in range(8)] for x in range(10)]
 BasicFont=[[0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00],
 [0x00,0x00,0x5F,0x00,0x00,0x00,0x00,0x00],
 [0x00,0x00,0x07,0x00,0x07,0x00,0x00,0x00],
@@ -192,7 +193,7 @@ def sendCommand(byte):
         block.append(byte)
         return bus.write_i2c_block_data(address,SeeedOLED_Command_Mode,block)
     except IOError:
-        print "IOError"
+        print("IOError")
         return -1
 
 def sendData(byte):
@@ -201,7 +202,7 @@ def sendData(byte):
         block.append(byte)
         return bus.write_i2c_block_data(address,SeeedOLED_Data_Mode,block)
     except IOError:
-        print "IOError"
+        print("IOError")
         return -1
 
 def multi_comm(commands):
